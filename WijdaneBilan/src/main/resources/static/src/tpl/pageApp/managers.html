@@ -1,0 +1,42 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Gestions des managers RH</h1>
+</div>
+<div class="wrapper-md">
+	<!--<button class="btn m-b-xs btn-sm btn-primary btn-addon" data-target="#ajouterCollab" data-toggle="modal">Ajouter un collaborateur</button>
+  -->
+   <div ng-controller="ModalDemoCtrlManager" class="panel b-a">
+          <script type="text/ng-template" id="myModalContent.html">
+            <div ng-include="'tpl/pageApp/modalManager.html'"></div>
+          </script>
+          <div class="panel-heading b-b b-light">Ajout des managers RH</div>
+          <div class="panel-body">
+            <button class="btn m-b-xs btn-sm btn-info btn-addon" ng-click="open()">Ajouter Manager RH</button>
+          </div>
+      </div>
+  <div class="panel panel-default">
+    <div class ="panel-heading">
+      La liste des managers
+    </div>
+
+    <div class="table-responsive">
+	<p></p>
+      <table  class="table table-striped b-t b-b" ng-controller="ManagerCtrl">
+        <thead>
+          <tr>
+            <th  style="width:15%">Nom </th>
+            <th  style="width:15%">Prénom</th>
+			 <th  style="width:15%">Matricule</th>
+		     <th  style="width:15%">Email</th>
+			 <th  style="width:15%">Action</th>
+          </tr>
+		  <tr ng-repeat="c in managers"><td>{{c.nomUser}}</td><td>{{c.prenomUser}}</td><td>{{c.matriculeUser}}</td><td>{{c.mailUser}}</td>
+		  <td><button class="btn btn-info" onclick="supprimer(c.idManager)">Modifier</button></td></tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+	  
+	  
+    </div>
+  </div>
+</div>

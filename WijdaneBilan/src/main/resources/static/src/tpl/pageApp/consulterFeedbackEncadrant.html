@@ -1,0 +1,77 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Feedbacks d'un collaborateur</h1>
+</div>
+<div class="wrapper-md" ng-controller="FeedbackCtrl">
+	<!--<button class="btn m-b-xs btn-sm btn-primary btn-addon" data-target="#ajouterCollab" data-toggle="modal">Ajouter un collaborateur</button>
+  -->
+   <div class="panel b-a">
+         
+          <div class="panel-body">
+		       <div class="col-sm-2">Choisir Matricule du Collaborateur</div>
+			   <form>
+			   <div class="col-sm-2">		<select class="form-control m-t"	ng-model="idCollaborateur" ng-change="getEncadrantFeedbacks()">
+			          <option ng-repeat="c in collaborateurs" ng-value="c.idCollaborateur">{{c.matriculeUser}}</option>
+		           </select> 
+			   </div>
+           </div>
+	</div>	   
+   <div class="panel panel-default" ng-if="collabfeedbacks">
+    <div ng-repeat="feed in collabfeedbacks.content">   {{collabfeedbacks.totalPages}}
+   
+    <div class="row">
+	  <div class="col-sm-6">   
+        
+	  <div class="panel b-a">
+          <div class="panel-heading b-b b-light">Informations du feedback</div>
+          <div class="panel-body">
+		    
+            <div class="row"><div class="col-sm-6"> Nom du collaborateur</div><div class="col-sm-6">{{feed.collaborateur.nomUser}}</div></div>
+            <div class="row"><div class="col-sm-6">Prénom</div><div class="col-sm-6">{{feed.collaborateur.prenomUser}}</div></div>
+			 <div class="row"><div class="col-sm-6">Matricule</div><div class="col-sm-6">{{feed.collaborateur.matriculeUser}}</div></div>
+			 <div class="row"><div class="col-sm-6">Poste Actuel </div><div class="col-sm-6">{{feed.collaborateur.poste}}</div></div>
+            <div class="row"><div class="col-sm-6">Code Projet</div><div class="col-sm-6">{{feed.projet.codeProjet}}</div></div>
+			 <div class="row"><div class="col-sm-6">Nom Projet</div><div class="col-sm-6">{{feed.projet.nomProjet}}</div></div>
+			 <div class="row"><div class="col-sm-6">Date Début d'intervention </div><div class="col-sm-6">{{feed.dateDebut}}</div></div>
+            <div class="row"><div class="col-sm-6">Date Fin d'intervention</div><div class="col-sm-6">{{feed.dateFin}}</div></div>
+			 <div class="row"><div class="col-sm-6">Role</div><div class="col-sm-6">{{feed.role}}</div></div>
+			 <div class="row"><div class="col-sm-6">Nombre de jours valorisés</div><div class="col-sm-6">{{feed.nbJours}}</div></div>
+			 <div class="row"><div class="col-sm-6">Commentaire Général </div><div class="col-sm-6">{{feed.commentaire}}</div></div>
+			 
+          </div>
+		  
+		  <ul ng-show="collabfeedbacks.totalPages>1" class="container nav nav-pills">
+            <li class="clickable" ng-repeat="p in pages track by $index" ng-class="{active:$index==pageCourante}">
+              <a ng-click="gotoPage1($index)">{{$index}}</a>
+            </li>
+     </ul>
+      </div>
+	  </div>
+	<div class="col-sm-6">
+    <div class="table-responsive">
+	 
+     <table  class="table table-striped b-t b-b">
+        <thead>
+          <tr>
+            <th>Thèmes </th>
+            <th>Qualification</th>
+			 <th>Remarque</th>
+			 
+          </tr>
+		  <tr ng-repeat="qualif in feed.qualifications">
+		       <td>{{qualif.theme.nomTheme}}</td><td>{{qualif.nomQualification}}</td><td>{{qualif.remarque}}</td>
+		       
+		  </tr>
+        </thead>
+      
+        <tbody>
+        </tbody>
+      </table>
+	  
+	  </div>
+	  </div>
+    </div>
+	</div>
+
+	</div>
+	
+	</div>

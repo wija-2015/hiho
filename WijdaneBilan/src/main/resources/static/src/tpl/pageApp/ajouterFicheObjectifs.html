@@ -1,0 +1,52 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Ajout de fiches d'objectifs d'un collaborateur</h1>
+</div>
+<div class="wrapper-md" ng-controller="FicheCtrl">
+	<!--<button class="btn m-b-xs btn-sm btn-primary btn-addon" data-target="#ajouterCollab" data-toggle="modal">Ajouter un collaborateur</button>
+  -->
+  
+	   <div class="panel b-a">
+         
+          <div class="panel-body">
+		       <div class="col-sm-2">Choisir Matricule Collaborateur</div>
+			   <form>
+			   <div class="col-sm-2">
+                  <select value="Selectionner Collaborateur" ng-model="idCollaborateur" ng-change="chargerCollab()">
+			               <option ng-repeat="c in collaborateurs" ng-value="c.idCollaborateur">{{c.matriculeUser}}</option>
+			       </select>  			   
+			   </div>
+			   
+           </div>
+	</div>
+	      
+<div ng-if="collab">{{collab.nomUser}}
+   <table class="table table-bordered table-hover table-condensed bg-white-only">
+    <tr style="font-weight: bold">
+      <td>Catégorie</td>
+      <td>Description</td>
+	  <td>Mesure</td>
+	  <td>Responsable Mesure</td>
+	  <td>Poids</td>
+      <td>Editer</td>
+    </tr>
+    <tr>
+        <td class="v-middle"><select value="Selectionner Catégorie" ng-model="objectif.idCategorie">
+			                      <option ng-repeat="c in categories" ng-value="c.idCategorie">{{c.nomCategorie}}</option>
+			                 </select> 
+		</td>
+		<td class="v-middle"><input type="text" class="form-control" placeholder="Description" ng-model="objectif.description" required ></td>
+		<td class="v-middle"><input type="text" class="form-control" placeholder="Mesure" ng-model="objectif.description" required ></td>
+		<td class="v-middle"><select value="Selectionner Evaluateur" ng-model="objectif.idCategorie">
+			                      <option ng-repeat="e in encadrants" ng-value="e.idEncadrant">{{e.matriculeUser}}</option>
+			                 </select> 
+		</td>
+		<td class="v-middle"><input type="number" class="form-control" placeholder="Poids" ng-model="objectif.evaluationObjectif.poidsObj" required ></td>
+       <td class="v-middle"><button class="btn btn-info" ng-click="modifier(c)">Envoyer</button></td>
+ 
+		
+		
+    </tr>
+  </table>
+	   
+	</div>
+</div>

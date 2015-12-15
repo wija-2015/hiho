@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h3 class="modal-title">Veuillez remplir les champs</h3>
+</div>
+<div class="modal-body">
+   <div class="panel panel-default">
+        <div class="panel-heading font-bold"> Informations du manager RH</div>
+        <div class="panel-body">
+          <form class="bs-example form-horizontal">
+          <div class="form-group">
+              <label class="col-lg-2 control-label">Prénom</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" placeholder="Prenom du collaborateur" ng-model="manager.prenomUser">
+              </div>
+            </div>
+          <div class="form-group">
+              <label class="col-lg-2 control-label">Nom</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" placeholder="Nom du manager" ng-model="manager.nomUser">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Matricule</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" name="matriculeUser" placeholder="Matricule du manager" ng-model="manager.matriculeUser">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Mail</label>
+              <div class="col-lg-10">
+                <input type="email" class="form-control" name="mailUser" placeholder="Email du manager" ng-model="manager.mailUser">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Mot de passe</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" name="" placeholder="password du manager" ng-model="manager.password">
+              </div>
+            </div>				
+            <div class="form-group">
+              <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit" class="btn btn-info" ng-click="inserer_manager()">Valider </button>
+				 <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
+<!-- <div class="modal-footer">                  
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+</div> -->

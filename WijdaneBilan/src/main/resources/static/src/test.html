@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8" />
+   <link rel="stylesheet" href="test.css" type="text/css" />
+</head>
+<body>
+<script src="../bower_components/angular/angular.js"></script>
+
+<h4>Angular-xeditable Trigger manually (Bootstrap 3)</h4>
+<div ng-app="app" ng-controller="Ctrl">
+  <span editable-text="user.name" e-form="textBtnForm">
+    {{ user.name || 'empty' }}
+  </span>
+  <button class="btn btn-default" ng-click="textBtnForm.$show()" ng-hide="textBtnForm.$visible">
+    edit
+  </button>
+  
+</div>
+</body>
+</html>

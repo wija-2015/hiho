@@ -1,0 +1,55 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Gestions des Encadrants</h1>
+</div>
+<div class="wrapper-md">
+	<!--<button class="btn m-b-xs btn-sm btn-primary btn-addon" data-target="#ajouterCollab" data-toggle="modal">Ajouter un collaborateur</button>
+  -->
+   <div ng-controller="ModalDemoCtrlEncadrant" class="panel b-a">
+          <script type="text/ng-template" id="myModalContent.html">
+            <div ng-include="'tpl/pageApp/modalEncadrant.html'"></div>
+          </script>
+          <div class="panel-heading b-b b-light">Ajout des encadrant</div>
+          <div class="panel-body">
+            <button class="btn m-b-xs btn-sm btn-primary btn-info" ng-click="open()">Ajouter Encadrant</button>
+          </div>
+      </div>
+  <div class="panel panel-default">
+    <div class ="panel-heading">
+      La liste des encadrants
+    </div>
+	
+	<div class="panel-body b-b b-light">
+      Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+    </div>
+
+    <div class="table-responsive">
+	<p></p>
+      <table  class="table m-b-none" data-filter="#filter" ui-jq="footable" data-page-size="5" ng-controller="EncadrantCtrl">
+        <thead>
+          <tr>
+            <th  style="width:15%">Nom </th>
+            <th  style="width:15%">Prénom</th>
+			 <th  style="width:15%">Matricule</th>
+	        <th  style="width:15%">Email</th>
+			 <th  style="width:15%">Profil</th>
+			 <th  style="width:15%">Action</th>
+          </tr>
+		  </thead>
+		  
+		 <tbody>
+		  <tr ng-repeat="c in encadrants"><td>{{c[1]}}</td><td>{{c[2]}}</td><td>{{c[3]}}</td><td>{{c[4]}}</td>
+		  <td>{{c[6]}}</td><td><button class="btn btn-info" onclick="supprimer(c.idEncadrant)">Modifier</button></td></tr>
+        </tbody>
+		<tfoot class="hide-if-no-paging">
+          <tr>
+              <td colspan="5" class="text-center">
+                  <ul class="pagination"></ul>
+              </td>
+          </tr>
+        </tfoot>
+      </table>
+	  
+	  
+    </div>
+  </div>
+</div>

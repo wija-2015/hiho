@@ -1,0 +1,83 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Baps précédents d'un collaborateur</h1>
+</div>
+<div class="wrapper-md" ng-controller="FeedbackCtrl">
+	<!--<button class="btn m-b-xs btn-sm btn-primary btn-addon" data-target="#ajouterCollab" data-toggle="modal">Ajouter un collaborateur</button>
+  -->
+   <div class="panel b-a">
+         
+          <div class="panel-body">
+		       <div class="col-sm-2">Choisir Matricule du Collaborateur</div>
+			   <form>
+			   <div class="col-sm-2">		<select class="form-control m-t"	ng-model="idCollaborateur">
+			          <option ng-repeat="c in collaborateurs" ng-value="c.idCollaborateur">{{c.matriculeUser}}</option>
+		           </select> 
+			   </div>
+			   </form>
+				    <div class="col-sm-2">	<button class="btn btn-info" ng-click="getcollabFeedbacks()" >Envoyer</button> 		
+              </div> 
+           </div>
+	</div>
+	 	<div class="panel panel-default">
+     
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Nom Collaborateur</th>
+        <th>Prénom</th>
+        <th>Date Recrutement</th>
+        <th>Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{.firstName}}</td>
+        <td>{w.lastName</td>
+        <td>ow.birthDate}}</td>
+        <td>ow.balance}}</td>
+      </tr>
+      </tbody>
+    </table>
+	
+  </div>
+	
+  
+  <div class="panel panel-default">
+    <div class ="panel-heading">
+      La liste des Baps
+    </div>
+	
+	<div class="panel-body b-b b-light">
+      Rechercher: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+    </div>
+
+    <div class="table-responsive">
+	<p></p>
+      <table  class="table m-b-none" data-filter="#filter" ui-jq="footable" data-page-size="3" ng-controller="EncadrantCtrl">
+        <thead>
+          <tr>
+		     <th  style="width:15%">Date Bap</th>
+            <th  style="width:15%">Poste </th>
+            <th  style="width:15%">Note Bap</th>
+	        <th  style="width:15%">Feedbacks</th>
+			 <th  style="width:15%">Fiche d'Objectifs</th>
+          </tr>
+		  </thead>
+		  
+		 <tbody>
+		  <tr ng-repeat="c in encadrants"><td>{{c[1]}}</td><td>{{c[2]}}</td><td>{{c[3]}}</td>
+		  <td><button class="btn btn-info" onclick="supprimer(c.idEncadrant)">Voir</button></td>
+		  <td><button class="btn btn-info" onclick="supprimer(c.idEncadrant)">Voir</button></td></tr>
+        </tbody>
+		<tfoot class="hide-if-no-paging">
+          <tr>
+              <td colspan="5" class="text-center">
+                  <ul class="pagination"></ul>
+              </td>
+          </tr>
+        </tfoot>
+      </table>	  
+	      
+    </div>
+  </div>
+</div>

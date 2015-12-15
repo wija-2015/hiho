@@ -1,0 +1,218 @@
+<!-- <div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Gestions des Feedbacks</h1>
+</div> -->
+<div class="wrapper-md" ng-controller="FeedbackCtrl">
+	<!--<button class="btn m-b-xs btn-sm btn-primary btn-addon" data-target="#ajouterCollab" data-toggle="modal">Ajouter un collaborateur</button>
+  -->
+      <div class="col-sm-12">
+        <form name="formValidate" class="form-horizontal form-validation">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <strong>Informations  du  feedback</strong>
+            </div> 
+            <div class="panel-body">
+             <div class="row">
+           <div class="col-sm-6">			 
+               <div class="form-group">
+                <label class="col-sm-2 control-label">Matricule Collaborateur </label>
+                <div class="col-sm-9">
+			       <select class="form-control m-t"	ng-model="feedback.idCollaborateur" required>
+			          <option ng-repeat="c in collaborateurs" ng-value="c.idCollaborateur">{{c.matriculeUser}}</option>
+		           </select>  
+
+                </div>
+				</div>
+				
+				<div class="form-group">
+				 <label class="col-sm-2 control-label">Date début de l'intervention </label>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control" placeholder="required field" ng-model="feedback.dateDebut" required >
+                </div>
+				</div>
+				
+				<div class="form-group">
+				 <label class="col-sm-2 control-label">Role</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" placeholder="required field" ng-model="feedback.role" required >
+                </div>
+				</div>
+			</div>			
+			<div class="col-sm-6">	
+			   <div class="form-group">
+                <label class="col-sm-3 control-label">Matricule Projet </label>
+                <div class="col-sm-9">
+			       <select class="form-control m-t"	ng-model="feedback.idProjet" required>
+			          <option ng-repeat="p in projets" ng-value="p.idProjet">{{p.codeProjet}}</option>
+		           </select>  
+                </div>
+				</div>
+				<div class="form-group">
+				 <label class="col-sm-3 control-label">Date fin de l'intervention </label>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control" placeholder="required field" ng-model="feedback.dateFin" required >
+                </div>
+				</div>
+				<div class="form-group">
+				 <label class="col-sm-3 control-label">Nombre de jours valorisés</label>
+                <div class="col-sm-9">
+                  <input type="number" class="form-control" placeholder="required field" ng-model="feedback.nbJours" required >
+                </div>
+				</div>
+			</div>
+          </div>
+		  <hr></hr>
+		  <div class="row">
+			<div class="col-sm-6">			                         	
+               <div class="form-group">	
+             	 <div class="col-sm-2">{{themes[0].nomTheme}}</div>
+                <div class="col-sm-4">
+			       <select class="form-control m-t"	ng-init="feedback.qualification[0].nomQualification='NA'" ng-model="feedback.qualification[0].nomQualification">
+			         <option>Critique</option>
+					  <option>A développer</option>
+					  <option>Selon Attente</option>
+					  <option>Démontre des Forces</option>
+		           </select>
+				   
+                </div>
+				  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="Saisir Remarque" ng-model="feedback.qualification[0].remarque" >
+                </div>
+				</div>			
+		    </div>
+		    <div class="col-sm-6">			                         	
+               <div class="form-group">
+                  <div class="col-sm-2">{{themes[1].nomTheme}}</div>			   
+                   <div class="col-sm-4">
+
+			       <select class="form-control m-t"	ng-init="feedback.qualification[1].nomQualification='NA'"  ng-model="feedback.qualification[1].nomQualification">
+			          <option>  Critique</option>
+					   <option>  A développer</option>
+					  <option>   Selon Attente</option>
+					  <option>   Démontre des Forces</option>
+		           </select>  
+                </div>
+				  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="Saisir Remarque" ng-model="feedback.qualification[1].remarque" >
+                </div>
+				</div>			
+		    </div>
+		    <div class="col-sm-6">			                         	
+               <div class="form-group">
+                 <div class="col-sm-2">{{themes[2].nomTheme}}</div>			   
+                 <div class="col-sm-4">
+			       <select class="form-control m-t"	ng-init="feedback.qualification[2].nomQualification='NA'" ng-model="feedback.qualification[2].nomQualification">
+			          <option>  Critique</option>
+					   <option>  A développer</option>
+					  <option>   Selon Attente</option>
+					  <option>   Démontre des Forces</option>
+		           </select>  
+                </div>
+				  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="Saisir Remarque" ng-model="feedback.qualification[2].remarque" >
+                </div>
+				</div>			
+		    </div>
+		    <div class="col-sm-6">			                         	
+               <div class="form-group">
+                 <div class="col-sm-2">{{themes[3].nomTheme}}</div>			   
+                 <div class="col-sm-4">
+			       <select class="form-control m-t"	ng-init="feedback.qualification[3].nomQualification='NA'" ng-model="feedback.qualification[3].nomQualification">
+			          <option>  Critique</option>
+					   <option>  A développer</option>
+					  <option>   Selon Attente</option>
+					  <option>   Démontre des Forces</option>
+		           </select>  
+                </div>
+				  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="Saisir Remarque" ng-model="feedback.qualification[3].remarque" >
+                </div>
+				</div>			
+		    </div>
+		    <div class="col-sm-6">			                         	
+               <div class="form-group">
+                 <div class="col-sm-2">{{themes[4].nomTheme}}</div>			   
+                 <div class="col-sm-4">
+			       <select class="form-control m-t"	ng-init="feedback.qualification[4].nomQualification='NA'" ng-model="feedback.qualification[4].nomQualification">
+			          <option>  Critique</option>
+					   <option>  A développer</option>
+					  <option>   Selon Attente</option>
+					  <option>   Démontre des Forces</option>
+		           </select>  
+                </div>
+				  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="Saisir Remarque" ng-model="feedback.qualification[4].remarque" >
+                </div>
+				</div>			
+		    </div>
+		    <div class="col-sm-6">			                         	
+               <div class="form-group">
+                  <div class="col-sm-2">{{themes[5].nomTheme}}</div>			   
+                  <div class="col-sm-4">
+			       <select class="form-control m-t"	ng-init="feedback.qualification[5].nomQualification='NA'" ng-model="feedback.qualification[5].nomQualification">
+			           <option>  Critique</option>
+					   <option>  A développer</option>
+					  <option>   Selon Attente</option>
+					  <option>   Démontre des Forces</option>
+		           </select>  
+                </div>
+				  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="Saisir Remarque" ng-model="feedback.qualification[5].remarque" >
+                </div>
+				</div>			
+		    </div>
+		    <div class="col-sm-6">		                         	
+               <div class="form-group">
+                 <div class="col-sm-2">{{themes[6].nomTheme}}</div>			   
+                 <div class="col-sm-4">
+			       <select class="form-control m-t"	ng-init="feedback.qualification[6].nomQualification='NA'" ng-model="feedback.qualification[6].nomQualification">
+			          <option>  Critique</option>
+					   <option>  A développer</option>
+					  <option>   Selon Attente</option>
+					  <option>   Démontre des Forces</option>
+		           </select>  
+                </div>
+				  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="Saisir Remarque" ng-model="feedback.qualification[6].remarque" >
+                </div>
+				</div>			
+		    </div>
+		    <div class="col-sm-6">			                         	
+               <div class="form-group">
+                  <div class="col-sm-2">{{themes[7].nomTheme}}</div>			   
+                   <div class="col-sm-4">
+			       <select class="form-control m-t"	ng-init="feedback.qualification[7].nomQualification='NA'" ng-model="feedback.qualification[7].nomQualification">
+			          <option>  Critique</option>
+					   <option>  A développer</option>
+					  <option>   Selon Attente</option>
+					  <option>   Démontre des Forces</option>
+		           </select>  
+                </div>
+				  <div class="col-sm-6">
+                  <input type="text" class="form-control" placeholder="Saisir Remarque" ng-model="feedback.qualification[7].remarque" >
+                </div>
+				</div>			
+		    </div>
+		  </div>
+		  <div class="row">
+           <div class="col-sm-3">               
+			       <h4><label>Commentaire Général </label></h4>
+			</div>
+           <div class="col-sm-8">			
+                  <input type="text" class="form-control" placeholder="Saisir votre commentaire" ng-model="feedback.commentaire" >
+                
+		   </div></div>
+            <footer class="panel-footer text-right bg-light lter">
+              
+			    <button type="submit" class="btn btn-primary" ng-click="inserer_feedback()">Envoyer </button>
+				 <button class="btn btn-danger" ng-click="vider()">Vider</button>
+            {{feedback}}
+            </footer>
+			
+          </div>
+		  </div>
+        </form>
+      
+</div>
+</div>
+	
+  
