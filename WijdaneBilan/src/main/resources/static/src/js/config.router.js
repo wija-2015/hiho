@@ -533,6 +533,16 @@ angular.module('app')
                       }]
                   },
                 access: { requiredAuthentication: false }
+              }).state('access.encadrant', {
+                  url: '/encadrant',
+                  templateUrl: 'tpl/pageApp/signinEncadrant.html',
+                  resolve: {
+                      deps: ['uiLoad',
+                        function( uiLoad ){
+                          return uiLoad.load( ['js/controllers/signin.js'] );
+                      }]
+                  },
+                access: { requiredAuthentication: false }
               })
               .state('access.signup', {
                   url: '/signup',

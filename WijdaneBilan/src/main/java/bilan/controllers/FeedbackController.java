@@ -3,6 +3,7 @@ package bilan.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import bilan.entities.Managerrh;
 import bilan.entities.Projet;
 import bilan.entities.Qualification;
 import bilan.entities.Theme;
+import bilan.mailSender.SmtpMailSender;
 import bilan.service.ICollabService;
 import bilan.service.IEncadrantService;
 import bilan.service.IFeedbackService;
@@ -49,9 +51,11 @@ public class FeedbackController {
 	private IEncadrantService encadrantService;
 	@Autowired
 	private IThemeService themeService;
+	@Autowired
+	private SmtpMailSender smtpMailSender ; 
 
 	@RequestMapping(value="save", method = RequestMethod.POST,consumes={"application/json"},produces ={"application/json"})
-	public boolean saveFeedback(@RequestBody FeedbackDTO f,HttpServletResponse response){	
+	public boolean saveFeedback(@RequestBody FeedbackDTO f,HttpServletResponse response) throws MessagingException{	
 		Feedback feed = new Feedback() ;
 		Collaborateur c = new Collaborateur() ;
 		Encadrant e = new Encadrant() ;
@@ -92,7 +96,10 @@ public class FeedbackController {
 	      qualificatioService.ajouterQualification(q.get(i)) ;
 	    	  
 	      }
-		 return true;
+	      smtpMailSender.send("mrtahalz@gmail.com", "Un feedback à été crée", "Un feedback est crée ");
+	      //smtpMailSender.send(c.getManagerrh().getMailUser(), "Un feedback à été crée", "Un feedback est crée ");
+			
+	      return true;
 }
 	
 	@RequestMapping(value="/encadrantFeedbacks/{idCollaborateur}/{idEncadrant}/{page}",method=RequestMethod.GET)

@@ -1,8 +1,26 @@
-app.controller("EncadrantCtrl",function(Encadrant,$scope,$http){
+app.controller("EncadrantCtrl",function(Encadrant,$scope,$http,$rootScope,$state,$window){
            Encadrant.findAll().then(function(d) {
     $scope.encadrants = d;
   });
-  
+           $scope.login=function(){
+               $http.post("http://localhost:8181/encadrants/signin",$scope.encadrant)
+               .success(function(response){
+              	 if(response!=0)
+              		 {
+              		$rootScope.authentication=true ;
+               		$window.sessionStorage.idUser=response ;
+               		$rootScope.isEncadrant=true ;
+              		$state.go('app.dashboard-v1');
+              		console.log(response) ;
+              		 }
+              	 else {
+              		$rootScope.authentication=false ;
+              		//AuthenticationService.isAuthenticated=false ;
+              		 $scope.message="identifiants incorrectes" ;
+              		 console.log(response) ;
+              	 }
+              	 })
+                 }
     $scope.modifier=function(SelectedEncadrant){
               	$http({
               	    url: 'http://localhost:8181/encadrants/update/'+SelectedEncadrant.idEncadrant,

@@ -16,6 +16,8 @@ public interface IEncadrantService {
 	public Encadrant trouverEncadrant(int id);
 	
 	public int supprimerEncadrant(int id);
+	public long verify(String mail, String matriculeUser);
+	public long getIdEncadrant(String mail, String matriculeUser) ;
 	
 	public int modifierEncadrant(String nom, String prenom,String mail,String matricule, int id);
 	

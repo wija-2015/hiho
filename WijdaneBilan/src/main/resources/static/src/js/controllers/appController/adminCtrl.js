@@ -11,6 +11,7 @@ app.controller("adminCtrl",function(Collaborateur,$rootScope,$scope,$http,$state
               		 {
               		$rootScope.authentication=true ;
                		$window.sessionStorage.idUser=response ;
+               		$rootScope.isAdmin=true ;
               		 $state.go('app.dashboard-v1');
               		 console.log(response) ;
            

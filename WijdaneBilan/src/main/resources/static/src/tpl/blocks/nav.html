@@ -1,15 +1,15 @@
 <!-- list -->
 <ul class="nav" >
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs"  ng-show="isAdmin">
     <span>Espace Administrateur</span>
   </li>
-  <li>
+  <li  ng-show="isAdmin">
      <a href class="auto">      
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
       </span>
-      <i class="icon-user icon text-success-lter"></i>
+      <i class="icon-user icon text-success-lter" ></i>
       <span class="font-bold">Gestion Collaborateurs</span>
     </a>
     <ul class="nav nav-sub dk">
@@ -41,7 +41,7 @@
       </li>
     </ul>
   </li>
-  <li class="line dk hidden-folded"></li>
+ 
   <li>
     <a href class="auto">      
       <span class="pull-right text-muted">
@@ -59,7 +59,7 @@
       </li>
     </ul>
   </li>
-  <li class="line dk hidden-folded"></li>
+ 
   <li>
     <a href class="auto">      
       <span class="pull-right text-muted">
@@ -87,11 +87,11 @@
       </li> -->
     </ul>
   </li>
-  <li class="line dk hidden-folded"></li>
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+ 
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-show="isManager">
     <span>Espace Manager RH</span>
   </li>
-  <li>
+  <li ng-show="isManager">
      <a href class="auto">      
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -129,11 +129,11 @@
     </ul>
   </li>
   
-  <li class="line dk hidden-folded"></li>
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+  <li class="line dk hidden-folded" ></li>
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-show="isEncadrant">
     <span>Espace Encadrant</span>
   </li>
-  <li>
+  <li ng-show="isEncadrant">
      <a href class="auto">      
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -171,11 +171,11 @@
     </ul>
   </li>
   
-  <li class="line dk hidden-folded"></li>
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+ 
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs" ng-show="isCollab">
     <span>Espace Collaborateur</span>
   </li>
-  <li>
+  <li ng-show="isCollab">
      <a href class="auto">      
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -213,7 +213,7 @@
     </ul>
   </li>
   
-  <li class="line dk hidden-folded"></li>
+ 
 
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components.COMPONENTS">Components</span>
@@ -505,7 +505,7 @@
     </ul>
   </li>
 
-  <li class="line dk hidden-folded"></li> 
+  
  <!--  <li>
     <a ui-sref="app.page.profile">
       <i class="icon-user icon text-success-lter"></i>

@@ -9,6 +9,7 @@ app.controller("ManagerCtrl",function(Manager,$rootScope,$scope,$http,$state,$wi
               	 if(response!=0)
               		 {
               		$rootScope.authentication=true ;
+              		$rootScope.isManager=true ;
                		 $window.sessionStorage.idUser=response ;
               		 $state.go('app.ajouterFicheObjectifs');
                      console.log(response) ;

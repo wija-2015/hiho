@@ -10,12 +10,13 @@ app.controller("CollaborateurCtrl",function(Collaborateur,Manager,$scope,$rootSc
               		 {
               		$rootScope.authentication=true ;
                		$window.sessionStorage.idUser=response ;
+               		$rootScope.isCollab=true ;
               		$state.go('app.dashboard-v1');
               		console.log(response) ;
               		 }
               	 else {
               		$rootScope.authentication=false ;
-              		AuthenticationService.isAuthenticated=false ;
+              		//AuthenticationService.isAuthenticated=false ;
               		 $scope.message="identifiants incorrectes" ;
               		 console.log(response) ;
               	 }
@@ -98,6 +99,10 @@ app.controller('ModalInstanceCtrlCollab', ['$scope','$http','$modalInstance','Ma
     		AuthenticationService.isAuthenticated=false ;
     		$rootScope.authentication=false  ;
 	          $window.sessionStorage.clear();
+	          $rootScope.isEncadrant=false ;
+	          $rootScope.isAdmin=false ;
+	          $rootScope.isManager=false ;
+	          $rootScope.isCollab=false ;
 	          $location.path("/access/administrateur");
 	          }
 	        }]);

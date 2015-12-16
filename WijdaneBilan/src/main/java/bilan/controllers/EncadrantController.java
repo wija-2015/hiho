@@ -36,6 +36,16 @@ private IProfilService profilService;
 public int updateEncadrant(@PathVariable("id")  int id,@RequestBody Encadrant c){
 	 return encadrantService.modifierEncadrant(c.getNomUser(), c.getPrenomUser(),c.getMailUser(),c.getMatriculeUser(), id);
 }
+
+@RequestMapping(value="signin", method = RequestMethod.POST,consumes={"application/json"},produces ={"application/json"})
+public long signinCollab(@RequestBody Collaborateur c, HttpServletResponse response){
+	 if(encadrantService.verify(c.getMailUser(), c.getMatriculeUser())==0) {
+		 return 0 ;
+	 }
+	 else 
+		 return encadrantService.getIdEncadrant(c.getMailUser(), c.getMatriculeUser());
+} 
+
 @RequestMapping(value="findAll", method = RequestMethod.GET)
 public List<Encadrant> getManagers(){
 return encadrantService.toutsEncadrants();
