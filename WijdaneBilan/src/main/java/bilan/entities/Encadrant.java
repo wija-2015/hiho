@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -29,10 +30,12 @@ public class Encadrant implements Serializable {
 	private Profil profil;
 
 	//bi-directional many-to-one association to Evaluationobjectif
+	@JsonIgnore
 	@OneToMany(mappedBy="encadrant")
 	private Collection<EvaluationObjectif> evaluationobjectifs;
 
 	//bi-directional many-to-one association to Feedback
+	@JsonIgnore
 	@OneToMany(mappedBy="encadrant")
 	private Collection<Feedback> feedbacks;
 

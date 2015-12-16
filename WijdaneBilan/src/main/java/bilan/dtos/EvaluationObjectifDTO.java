@@ -10,8 +10,6 @@ public class EvaluationObjectifDTO {
 	private int idObjectif;
 	private int idEncadrant;
 	private String mesureObj;
-	//private int idCollaborateur;
-	
 	
 	public int getIdEncadrant() {
 		return idEncadrant;
@@ -56,4 +54,5 @@ public class EvaluationObjectifDTO {
 	public void setIdObjectif(int idObjectif) {
 		this.idObjectif = idObjectif;
 	}
+	
 }

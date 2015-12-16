@@ -1,7 +1,8 @@
 app.controller("CollaborateurCtrl",function(Collaborateur,Manager,$scope,$rootScope,$http,$window,$state){
+	
            Collaborateur.findAll().then(function(d) {
-    $scope.collaborateurs = d;
-  });
+             $scope.collaborateurs = d;
+           });
            $scope.login=function(){
                $http.post("http://localhost:8181/collaborateurs/signin",$scope.collaborateur)
                .success(function(response){

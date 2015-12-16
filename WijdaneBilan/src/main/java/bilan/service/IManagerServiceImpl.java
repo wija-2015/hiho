@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import bilan.dao.IManagerRepository;
+import bilan.dtos.CollaborateurDTO;
+import bilan.dtos.ManagerrhDTO;
 import bilan.entities.Collaborateur;
 import bilan.entities.Managerrh;
 
@@ -39,8 +41,8 @@ public class IManagerServiceImpl implements IManagerService {
 	}
 	
 	@Override
-	public int modifierManager(String nom, String prenom, int id) {
-		return managerRepository.updateManager(nom, prenom, id);
+	public int modifierManager(String nom, String prenom, String mail,String matricule, int id) {
+		return managerRepository.updateManager(nom, prenom,mail, matricule, id);
 	}
 	
 	@Override

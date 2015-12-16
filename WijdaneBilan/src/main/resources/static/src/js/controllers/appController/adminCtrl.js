@@ -1,6 +1,10 @@
-app.controller("adminCtrl",function($rootScope,$scope,$http,$state,$window){
+app.controller("adminCtrl",function(Collaborateur,$rootScope,$scope,$http,$state,$window){
+	
+	Collaborateur.findAll().then(function(d) {
+              $scope.collaborateurs = d;
+            }); 
    
-           $scope.login=function(){
+        $scope.login=function(){
                $http.post("http://localhost:8181/admins/signin",$scope.admin)
                .success(function(response){
               	 if(response!=0)
@@ -18,8 +22,24 @@ app.controller("adminCtrl",function($rootScope,$scope,$http,$state,$window){
               		 console.log(response) ;
               	 }
               	 })
-                 }
-         
+                 };
+		
+		//$scope.collabs=[];			
+	    $scope.chargerManagerCollabs=function(){
+	     	$http.get("http://localhost:8181/managers/collabs/"+$scope.idManager)
+	  	    .success(function(data){
+		    $scope.collabs=data;
+		    console.log(data);
+		});
+		};
+		$scope.idCollaborateur=null;
+		$scope.chargerFicheObjectifs=function(){
+		$http.get("http://localhost:8181/objectifs/ficheCollab/"+$scope.idCollaborateur)
+		.success(function(data){
+		$scope.ficheObjectifs=data;
+		console.log(data);
+		});
+		};
     
           });
 

@@ -43,26 +43,9 @@ public class ICollabServiceImpl implements ICollabService {
 		
 	}
 	@Override
-	public int modifierCollab(String nom, String prenom ,String email ,int id) {
-		return collabRepository.updateCollab(nom, prenom,email, id);
+	public int modifierCollab(String nom, String prenom ,String email,String matricule ,int id) {
+		return collabRepository.updateCollab(nom, prenom,email, matricule, id);
 	}
-	
-	@Override
-	@Transactional
-	public Collaborateur modifierCollab(CollaborateurDTO cdto, int id) {
-		Collaborateur c=collabRepository.findCollab(id);
-		c.setNomUser(cdto.getNomUser());
-		c.setPrenomUser(cdto.getPrenomUser());
-		c.setMatriculeUser(cdto.getMatriculeUser());
-		c.setPassword(cdto.getPassword());
-		c.setMailUser(cdto.getMailUser());
-		c.setDateRecrutement(cdto.getDateRecrutement());
-		Managerrh Manager = new Managerrh();
-		Manager = managerRepository.findManager(cdto.getIdManagerrh());
-		c.setManagerrh(Manager);
-		return collabRepository.save(c);
-	}
-
 
 	@Override
 	public long verify(String mail, String matriculeUser) {

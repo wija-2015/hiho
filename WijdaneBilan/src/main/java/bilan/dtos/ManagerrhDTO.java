@@ -1,20 +1,18 @@
 package bilan.dtos;
 
-public class EncadrantDTO {
+public class ManagerrhDTO {
 	
-	private int idEncadrant;
+	private int idManagerrh;
 	private String mailUser;
 	private String matriculeUser;
 	private String nomUser;
 	private String prenomUser;
 	private String password;
-	private int idProfil;
-	
-	public int getIdEncadrant() {
-		return idEncadrant;
+	public int getIdManagerrh() {
+		return idManagerrh;
 	}
-	public void setIdEncadrant(int idEncadrant) {
-		this.idEncadrant = idEncadrant;
+	public void setIdManagerrh(int idManagerrh) {
+		this.idManagerrh = idManagerrh;
 	}
 	public String getMailUser() {
 		return mailUser;
@@ -46,13 +44,5 @@ public class EncadrantDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getIdProfil() {
-		return idProfil;
-	}
-	public void setIdProfil(int idProfil) {
-		this.idProfil = idProfil;
-	}
-	
-	
 
 }

@@ -26,6 +26,14 @@ public class Objectif implements Serializable {
 	@JoinColumn(name="idCategorie")
 	private Categorie categorie;
 	
+	public Managerrh getManagerrh() {
+		return managerrh;
+	}
+
+	public void setManagerrh(Managerrh managerrh) {
+		this.managerrh = managerrh;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="id_managerrh")
 	private Managerrh managerrh;

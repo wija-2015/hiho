@@ -22,6 +22,7 @@ import bilan.entities.Collaborateur;
 import bilan.entities.Encadrant;
 import bilan.entities.EvaluationObjectif;
 import bilan.entities.Feedback;
+import bilan.entities.Managerrh;
 import bilan.entities.Objectif;
 import bilan.entities.Projet;
 import bilan.entities.Qualification;
@@ -30,6 +31,7 @@ import bilan.service.ICategorieService;
 import bilan.service.ICollabService;
 import bilan.service.IEncadrantService;
 import bilan.service.IEvaluationObjectifService;
+import bilan.service.IManagerService;
 import bilan.service.IObjectifService;
 
 @RestController
@@ -46,21 +48,25 @@ private IEncadrantService encadrantService;
 private IEvaluationObjectifService evaluationObjectifService;
 @Autowired
 private ICollabService collaborateurService;
+@Autowired
+private IManagerService managerService;
 
 @RequestMapping(value="findAll", method = RequestMethod.GET)
 public List<Objectif> getObjectifs(){
 return objectifService.toutsObjectifs();
 }
-@RequestMapping(value="save", method = RequestMethod.POST,consumes={"application/json"},produces ={"application/json"})
-public boolean saveObjectif(@RequestBody ObjectifDTO o,HttpServletResponse response){	
+@RequestMapping(value="/save/{id}", method = RequestMethod.POST,consumes={"application/json"},produces ={"application/json"})
+public boolean saveObjectif(@RequestBody ObjectifDTO o,@PathVariable("id")  int id,HttpServletResponse response){	
 	Objectif obj = new Objectif() ;
-	//Feedback feed = new Feedback() ;
 	Categorie cat = new Categorie() ;
 	cat=categorieService.trouverCategorie(o.getIdCategorie()) ;
 	obj.setCategorie(cat);
 	obj.setDescription(o.getDescription());
 	obj.setDiffBapBip(o.getDiffBapBip());
 	obj.setMoyenObj(o.getMoyenObj());
+	Managerrh manager=new Managerrh();
+	manager=managerService.trouverManager(id);
+	obj.setManagerrh(manager);
 	 
       List<EvaluationObjectif> ev=new ArrayList<EvaluationObjectif>() ;
       List<Encadrant> encadrants= new ArrayList<Encadrant>() ;
@@ -70,18 +76,15 @@ public boolean saveObjectif(@RequestBody ObjectifDTO o,HttpServletResponse respo
     	  e=encadrantService.trouverEncadrant(o.getEvaluations().get(i).getIdEncadrant());
     	  encadrants.add(e);
       }
-     
       Collaborateur col=new Collaborateur();
-      col=collaborateurService.trouverCollab(1);
-      String mesure="hhhhhhhhhhhh";
-      System.out.println(mesure);
+      col=collaborateurService.trouverCollab(o.getIdCollaborateur());
       for(int i=0 ; i<=2 ; i++)
       {
     	 ev.add(new EvaluationObjectif());
-    	 //ev.get(i).setMesureObj(mesure);
-    	 //ev.get(i).setPoidsObj(o.getEvaluations().get(i).getPoidsObj());
-    	 //ev.get(i).setResultatObj(o.getEvaluations().get(i).getResultatObj());
-    	 //ev.get(i).setNoteFinaleObj(o.getEvaluations().get(i).getNoteFinaleObj());
+    	 ev.get(i).setMesureObj(o.getEvaluations().get(i).getMesureObj());
+    	 ev.get(i).setPoidsObj(o.getEvaluations().get(i).getPoidsObj());
+    	 ev.get(i).setResultatObj(o.getEvaluations().get(i).getResultatObj());
+    	 ev.get(i).setNoteFinaleObj(o.getEvaluations().get(i).getNoteFinaleObj());
     	 ev.get(i).setEncadrant(encadrants.get(i));
     	 ev.get(i).setCollaborateur(col);
       }
@@ -96,8 +99,10 @@ public boolean saveObjectif(@RequestBody ObjectifDTO o,HttpServletResponse respo
       
 	 return true;
       }
-
-
+@RequestMapping(value="/ficheCollab/{idCollaborateur}",method=RequestMethod.GET)
+public List<Objectif> getFicheObjectifs(@PathVariable("idCollaborateur") int idCollaborateur) {	
+	return objectifService.ficheCollab(idCollaborateur);
+}
 public IObjectifService getObjectifService() {
 	return objectifService;
 }

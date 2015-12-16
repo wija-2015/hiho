@@ -1,0 +1,59 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Consulter fiche d'objectifs d'un collaborateur</h1>
+</div>
+<div class="wrapper-md" ng-controller="FicheCtrl">
+	<!--<button class="btn m-b-xs btn-sm btn-primary btn-addon" data-target="#ajouterCollab" data-toggle="modal">Ajouter un collaborateur</button>
+  -->
+  
+	   <div class="panel b-a">
+         
+          <div class="panel-body">
+		       <div class="col-sm-2">Choisir Matricule Collaborateur</div>
+			   <form>
+			   <div class="col-sm-2">
+                  <select value="Selectionner Collaborateur" ng-model="idCollaborateur" ng-change="chargerFiche()">
+			               <option ng-repeat="c in collaborateurs" ng-value="c.idCollaborateur">{{c.matriculeUser}}</option>
+			       </select> 			   
+			   </div>
+			   <div ng-controller="ManagerCtrl">{{iduse}}</div>
+           </div>
+	</div>
+	      
+<div ng-if="ficheObjectif">         
+   <table class="table table-bordered table-hover table-condensed bg-white-only">
+    <tr style="font-weight: bold">
+      <td>Catégorie</td>
+	  <td>Objectif</td>
+      <td>Description</td>
+	  <td>Mesure</td>
+	  <td>Responsable Mesure</td>
+	  <td>Profil Responsable Mesure</td>
+	  <td>Poids</td>
+	  <td>Résultat</td>
+      <td>Action</td>
+    </tr>
+    <tr ng-repeat="obj in ficheObjectif">
+        <td class="v-middle">{{obj.categorie.nomCategorie}}</td>
+		<td class="v-middle">Objectif</td>
+		<td class="v-middle">{{obj.description}}</td>
+		<td class="v-middle">
+		  <div ng-repeat="eval in obj.evaluationobjectifs">{{eval.mesureObj}}</div>
+		</td>
+		<td class="v-middle">
+		  <div ng-repeat="eval in obj.evaluationobjectifs">{{eval.encadrant.nomUser}}{{eval.encadrant.prenomUser}}:{{eval.encadrant.matriculeUser}}</div>
+		</td>
+		<td class="v-middle">
+		  <div ng-repeat="eval in obj.evaluationobjectifs">{{eval.encadrant.profil.nomProfil}}</div>
+		</td>
+		<td class="v-middle">
+		   <div ng-repeat="eval in obj.evaluationobjectifs">{{eval.poidsObj}}</div>
+		</td>
+		<td class="v-middle">
+		   <div ng-repeat="eval in obj.evaluationobjectifs">{{eval.resultatObj}}</div>
+		</td>      
+	    <td class="v-middle"><button class="btn btn-sm btn-info" ng-click="">Envoyer</button><br></br><button class="btn btn-sm btn-info" ng-click="">Supprimer</button></td>
+	</tr>
+  </table>
+	   
+	</div>
+</div>

@@ -2,6 +2,8 @@ package bilan.service;
 
 import java.util.List;
 
+import bilan.dtos.CollaborateurDTO;
+import bilan.dtos.EncadrantDTO;
 import bilan.entities.Collaborateur;
 import bilan.entities.Encadrant;
 
@@ -15,7 +17,7 @@ public interface IEncadrantService {
 	
 	public int supprimerEncadrant(int id);
 	
-	public int modifierEncadrant(String nom, String prenom,int id);
+	public int modifierEncadrant(String nom, String prenom,String mail,String matricule, int id);
 	
 	public List<Collaborateur> trouverEncadrantCollabs(int id);
 	

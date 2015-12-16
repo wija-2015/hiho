@@ -29,8 +29,8 @@ public interface IManagerRepository extends JpaRepository<Managerrh, Long>{
 	
 	@Modifying
 	@Transactional
-	@Query("update Managerrh c set c.nomUser= :nom, c.prenomUser= :prenom where c.idManagerrh = :x")
-	public int updateManager(@Param("nom")String nom,@Param("prenom")String prenom,@Param("x")int id);
+	@Query("update Managerrh c set c.nomUser= :nom, c.prenomUser= :prenom, c.mailUser= :email,c.matriculeUser= :matricule where c.idManagerrh = :x")
+	public int updateManager(@Param("nom")String nom,@Param("prenom")String prenom,@Param("email") String email,@Param("matricule") String matricule,@Param("x")int id);
 	
 	@Query("select c from Collaborateur c where c.managerrh.idManagerrh like :x")
 	public List<Collaborateur> findManagerCollabs(@Param("x")int id);

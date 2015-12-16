@@ -7,14 +7,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import bilan.dao.IEncadrantRepository;
+import bilan.dao.IProfilRepository;
+import bilan.dtos.EncadrantDTO;
+import bilan.dtos.ManagerrhDTO;
 import bilan.entities.Collaborateur;
 import bilan.entities.Encadrant;
+import bilan.entities.Managerrh;
+import bilan.entities.Profil;
 
 @Service
 @Transactional
 public class IEncadrantServiceImpl implements IEncadrantService {
 	@Autowired
 	private IEncadrantRepository encadrantRepository;
+	@Autowired
+	private IProfilRepository profilRepository;
 
 	@Override
 	public List<Encadrant> toutsEncadrants() {
@@ -36,14 +43,12 @@ public class IEncadrantServiceImpl implements IEncadrantService {
 
 	@Override
 	public int supprimerEncadrant(int id) {
-		// TODO Auto-generated method stub
 		return encadrantRepository.deleteEncadrant(id);
 	}
 
 	@Override
-	public int modifierEncadrant(String nom, String prenom, int id) {
-		
-		return encadrantRepository.updateEncadrant(nom, prenom, id);
+	public int modifierEncadrant(String nom, String prenom,String mail,String matricule, int id) {
+		return encadrantRepository.updateEncadrant(nom, prenom,mail, matricule, id);
 	}
 
 	@Override
@@ -59,7 +64,4 @@ public class IEncadrantServiceImpl implements IEncadrantService {
 	public void setEncadrantRepository(IEncadrantRepository encadrantRepository) {
 		this.encadrantRepository = encadrantRepository;
 	}
-	
-	
-
-}
+	}

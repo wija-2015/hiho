@@ -53,11 +53,6 @@ angular.module('app')
                   templateUrl: 'tpl/pageApp/encadrants.html' ,
                   access: { requiredAuthentication: true }
               })
-			  .state('app.ajouterFicheObjectifs', {
-                  url: '/ficheObjectifs',
-                  templateUrl: 'tpl/pageApp/ajouterFicheObjectifs.html' ,
-                  access: { requiredAuthentication: true }
-              })
 			  .state('app.ajouterFeedback', {
                   url: '/ajouterFeedback',
                   templateUrl: 'tpl/pageApp/ajouterFeedback.html',
@@ -95,9 +90,24 @@ angular.module('app')
               })
 			  .state('app.consulterAnciensBap', {
                   url: '/anciensBap',
-                  templateUrl: 'tpl/pageApp/consulterAnciensBap.html'
+                  templateUrl: 'tpl/pageApp/consulterAnciensBap.html',
+				  access: { requiredAuthentication: true }
               })
-			  
+			  .state('app.ajouterFicheObjectifs', {
+                  url: '/ficheObjectifs',
+                  templateUrl: 'tpl/pageApp/ajouterFicheObjectifs.html' ,
+                  access: { requiredAuthentication: true }
+              })
+			  .state('app.consulterFicheObjectifs', {
+                  url: '/ficheObjectifss',
+                  templateUrl: 'tpl/pageApp/consulterFicheObjectifs.html',
+				  access: { requiredAuthentication: true }
+              })
+			  .state('app.consulterFicheObjectifsAdmin', {
+                  url: '/ficheObjectifsAdmin',
+                  templateUrl: 'tpl/pageApp/consulterFicheObjectifsAdmin.html',
+				  access: { requiredAuthentication: true }
+              })
 			  
               .state('app.dashboard-v2', {
                   url: '/dashboard-v2',

@@ -1,7 +1,20 @@
-app.controller("EncadrantCtrl",function(Encadrant,$scope){
+app.controller("EncadrantCtrl",function(Encadrant,$scope,$http){
            Encadrant.findAll().then(function(d) {
     $scope.encadrants = d;
   });
+  
+    $scope.modifier=function(SelectedEncadrant){
+              	$http({
+              	    url: 'http://localhost:8181/encadrants/update/'+SelectedEncadrant.idEncadrant,
+              	    method: 'PUT',
+              	    data:SelectedEncadrant
+              	})
+              	.success(function(response) {  
+          		          console.log(response);
+          				  console.log(JSON.stringify($scope.encadrant));
+          				  window.alert("Encadrant modifié !");
+          				  });
+           };
     
           });
 	

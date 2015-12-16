@@ -1,27 +1,41 @@
 app.controller('FicheCtrl',function(Collaborateur,Categorie,Encadrant,$filter,$http,$scope){
-	
-    Collaborateur.findAll().then(function(d) {
-              $scope.collaborateurs = d;
-            });
 	Encadrant.findAll().then(function(d) {
               $scope.encadrants = d;
-            });  
+            }); 
+   Collaborateur.findAll().then(function(d) {
+              $scope.collaborateurs = d;
+            });
 	Categorie.findAll().then(function(d) {
               $scope.categories = d;
-            });  
+            }); 
+    $scope.collabs=[];			
+	$scope.chargerManagerCollabs=function(){
+		$http.get("http://localhost:8181/managers/collabs/"+$scope.iduse)
+		.success(function(data){
+		$scope.collabs=data;
+		console.log(data);
+		});
+		};
     $scope.chargerCollab=function(){
-		$http.get("http://localhost:8181/collaborateurs/collab/"+$scope.idCollaborateur)
+		$http.get("http://localhost:8181/collaborateurs/collab/"+$scope.objectif.idCollaborateur)
 		.success(function(data){
 		$scope.collab=data;
 		console.log(data);
 		});
 		};
+	$scope.chargerFiche=function(){
+		$http.get("http://localhost:8181/objectifs/ficheCollab/"+$scope.idCollaborateur)
+		.success(function(data){
+		$scope.ficheObjectif=data;
+		console.log(data);
+		});
+		};
 	$scope.objectif={} ;
-	$scope.objectif.evaluationObjectif=[] ;
-	$scope.inserer_feedback = function () {
+	$scope.objectif.evaluations=[] ;
+	$scope.inserer_objectif = function () {
     	datas=$scope.objectif ;
     	$http({
-    	    url: 'http://localhost:8181/feedbacks/save',
+    	    url: 'http://localhost:8181/objectifs/save/7',
     	    method: 'POST',
     	    data:datas
     	})
@@ -30,4 +44,8 @@ app.controller('FicheCtrl',function(Collaborateur,Categorie,Encadrant,$filter,$h
 				$scope.vider();
 				  });
     };
+	$scope.vider = function () {
+		$scope.objectif={} ;
+	    $scope.objectif.evaluations=[] ;
+	}
 });

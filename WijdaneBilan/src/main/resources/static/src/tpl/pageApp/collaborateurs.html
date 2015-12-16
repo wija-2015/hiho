@@ -17,29 +17,38 @@
     <div class ="panel-heading">
       La liste des collaborateurs
     </div>
-
+	<div class="panel-body b-b b-light">
+      Rechercher: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+    </div>
     <div class="table-responsive">
 	
-      <table  class="table table-striped b-t b-b" ng-controller="CollaborateurCtrl">
+      <table  class="table m-b-none" data-filter="#filter" ui-jq="footable" data-page-size="5" ng-controller="CollaborateurCtrl">
         <thead>
           <tr>
-            <th  style="width:15%">Nom </th>
-            <th  style="width:15%">Prénom</th>
-			 <th  style="width:15%">Matricule</th>
-			 <th  style="width:15%">Date de recrutement</th>
-            <th  style="width:15%">Email</th>
-			 <th  style="width:15%">Nom Manager RH</th>
-			 <th  style="width:15%">Prénom Manager RH</th>
-			 <th  style="width:15%">Action</th>
+            <th>Prénom</th>
+			 <th>Nom </th>
+			 <th>Matricule</th>
+			 <th>Date de recrutement</th>
+            <th>Email</th>
+			 <th>Nom Manager RH</th>
+			 <th>Prénom Manager RH</th>
+			 <th>Action</th>
           </tr>
-		  <tr ng-repeat="c in collaborateurs"><td editable-text="c.nomUser">{{c.nomUser || empty}}</td><td editable-text="c.prenomUser">{{c.prenomUser || empty}}</td><td editable-text="c.matriculeUser">{{c.matriculeUser || empty}}</td><td>{{c.dateRecrutement |date:'yyyy-MM-dd'}}</td><td editable-text="c.mailUser">{{c.mailUser || empty}}</td>
+		  </thead>
+		  <tbody>
+		  <tr ng-repeat="c in collaborateurs"><td editable-text="c.prenomUser">{{c.prenomUser || empty}}</td>
+		  <td editable-text="c.nomUser">{{c.nomUser || empty}}</td><td editable-text="c.matriculeUser">{{c.matriculeUser || empty}}</td>
+		  <td>{{c.dateRecrutement |date:'yyyy-MM-dd'}}</td><td editable-text="c.mailUser">{{c.mailUser || empty}}</td>
 		 	  <td >{{c.managerrh.prenomUser }}</td><td >{{c.managerrh.nomUser}}</td><td><button class="btn btn-info" ng-click="modifier(c)">Modifier</button></td>
-	
-		  </tr>
-        </thead>
-      
-        <tbody>
+		  </tr> 
         </tbody>
+		 <tfoot class="hide-if-no-paging">
+          <tr>
+              <td colspan="5" class="text-center">
+                  <ul class="pagination"></ul>
+              </td>
+          </tr>
+        </tfoot>
       </table>
 	  
 	  

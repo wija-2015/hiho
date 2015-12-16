@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class EvaluationObjectif implements Serializable {
@@ -17,16 +19,19 @@ public class EvaluationObjectif implements Serializable {
 	private float resultatObj;
 
 	//bi-directional many-to-one association to Collaborateur
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idCollaborateur")
 	private Collaborateur collaborateur;
 
 	//bi-directional many-to-one association to Encadrant
+	//@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idEncadrant")
 	private Encadrant encadrant;
 
 	//bi-directional many-to-one association to Objectif
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idObjectif")
 	private Objectif objectif;

@@ -13,9 +13,6 @@ import bilan.entities.Objectif;
 public interface IObjectifRepository extends JpaRepository<Objectif, Long>{
 	
 	
-	//@Query("select a from Objectif a where a.idObjectif like :x")
-	//public Objectif findAdmin(@Param("x")int id);
-	
 	@Modifying
 	@Transactional
 	@Query("delete Objectif a where a.idObjectif = ?1")
@@ -26,11 +23,8 @@ public interface IObjectifRepository extends JpaRepository<Objectif, Long>{
 	@Query("update Objectif a set a.description= :desc where a.idObjectif = :x")
 	public int updateAObjectif(@Param("desc")String desc, @Param("x")int id);
 	
-	//@Query("select m.nomUser,m.mailUser,m.matriculeUser from Managerrh m")
-	//public List<Managerrh> findAllManagers();
-	
-	//@Query("select a.nomUser,a.prenomUser,a.mailUser from Objectif a")
-	//public List<Objectif> findAllAdmins();
+	@Query("select distinct o from Objectif o,EvaluationObjectif ev where o.idObjectif= ev.objectif.idObjectif and ev.collaborateur.idCollaborateur like :idC")
+	public List<Objectif> ficheCollab(@Param("idC")int idC);
 
 	public List<Objectif> findAll();
 	

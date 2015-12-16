@@ -17,20 +17,10 @@ public interface ICollabService {
 	
 	public int supprimerCollab(int id);
 	
-	public Collaborateur modifierCollab(CollaborateurDTO c,int id);
-	
 	public long verify(String mail, String matriculeUser);
+	
 	public long getIdCollab(String mail, String matriculeUser);
 
-	int modifierCollab(String nom, String prenom, String email, int id);
-	
+	public int modifierCollab(String nom, String prenom, String email,String matricule, int id);
 
-	/*public User getUserById(Long id);
-
-	void deleteUser(Long id);
-	
-	//List<User> findClientbyPromotion(Long id);
-	
-	void save (User client);*/
-	
 }

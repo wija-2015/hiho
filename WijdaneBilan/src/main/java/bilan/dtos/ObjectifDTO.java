@@ -11,8 +11,15 @@ public class ObjectifDTO {
 	private String moyenObj;
 	private int idCategorie;
 	private int idCollaborateur;
+	private int idManager;
+	
+	public int getIdManager() {
+		return idManager;
+	}
+	public void setIdManager(int idManager) {
+		this.idManager = idManager;
+	}
 	private List<EvaluationObjectifDTO> evaluations= new ArrayList<EvaluationObjectifDTO>() ;
-	//private String mesureObj;
 	
 	public List<EvaluationObjectifDTO> getEvaluations() {
 		return evaluations;

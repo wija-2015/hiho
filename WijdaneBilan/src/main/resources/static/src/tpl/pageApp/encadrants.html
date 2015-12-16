@@ -19,26 +19,27 @@
     </div>
 	
 	<div class="panel-body b-b b-light">
-      Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+      Rechercher: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
     </div>
 
     <div class="table-responsive">
-	<p></p>
       <table  class="table m-b-none" data-filter="#filter" ui-jq="footable" data-page-size="5" ng-controller="EncadrantCtrl">
         <thead>
           <tr>
+		     <th  style="width:15%">Prénom</th>
             <th  style="width:15%">Nom </th>
-            <th  style="width:15%">Prénom</th>
 			 <th  style="width:15%">Matricule</th>
 	        <th  style="width:15%">Email</th>
 			 <th  style="width:15%">Profil</th>
 			 <th  style="width:15%">Action</th>
           </tr>
 		  </thead>
-		  
 		 <tbody>
-		  <tr ng-repeat="c in encadrants"><td>{{c[1]}}</td><td>{{c[2]}}</td><td>{{c[3]}}</td><td>{{c[4]}}</td>
-		  <td>{{c[6]}}</td><td><button class="btn btn-info" onclick="supprimer(c.idEncadrant)">Modifier</button></td></tr>
+		  <tr ng-repeat="c in encadrants"><td editable-text="c.prenomUser">{{c.prenomUser || empty}}</td>
+		  <td editable-text="c.nomUser">{{c.nomUser || empty}}</td><td editable-text="c.matriculeUser">{{c.matriculeUser || empty}}</td>
+		  <td editable-text="c.mailUser">{{c.mailUser || empty}}</td><td >{{c.profil.nomProfil }}</td>
+		  <td><button class="btn btn-info" ng-click="modifier(c)">Modifier</button></td>
+		  </tr>
         </tbody>
 		<tfoot class="hide-if-no-paging">
           <tr>
@@ -51,5 +52,6 @@
 	  
 	  
     </div>
-  </div>
 </div>
+</div>
+

@@ -32,7 +32,10 @@ private IEncadrantService encadrantService;
 @Autowired
 private IProfilService profilService;
 
-@ResponseBody
+@RequestMapping(value="/update/{id}", method = RequestMethod.PUT)
+public int updateEncadrant(@PathVariable("id")  int id,@RequestBody Encadrant c){
+	 return encadrantService.modifierEncadrant(c.getNomUser(), c.getPrenomUser(),c.getMailUser(),c.getMatriculeUser(), id);
+}
 @RequestMapping(value="findAll", method = RequestMethod.GET)
 public List<Encadrant> getManagers(){
 return encadrantService.toutsEncadrants();
@@ -55,10 +58,7 @@ public Encadrant saveEncadrant(@RequestBody EncadrantDTO c,HttpServletResponse r
 public Encadrant findCollab(@PathVariable("id") int id){
 	return encadrantService.trouverEncadrant(id);
 }
-@RequestMapping(value="/update/{id}/{nom}/{prenom}", method = RequestMethod.PUT)
-public int updateManager(@PathVariable("nom") String nom,@PathVariable("prenom") String prenom,@PathVariable("id") int id){
-	 return encadrantService.modifierEncadrant(nom, prenom, id);
-}
+
 @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
 public int deleteManager(@PathVariable("id") int id){
    return encadrantService.supprimerEncadrant(id);
@@ -67,43 +67,6 @@ public int deleteManager(@PathVariable("id") int id){
 public List<Collaborateur> findManagerCollabs(@PathVariable("id") int id){
 	return encadrantService.trouverEncadrantCollabs(id);
 }
-
-
-/*@RequestMapping(value="/add")
-public Client addClient(ClientDTO clientDTO)
-{
-	Client c  = new Client();
-	c.setNomClient(clientDTO.getNom());
-	c.setPrenomClient(clientDTO.getPrenom());
-
-	//c = clientService.save(c);
-	return c;
-	
-}*/
-
-/*
-@RequestMapping("/produits")
-public Page<Produit> getProduits(int page){
-return produitRepository.findAll(new PageRequest(page, 5));
-}
-@RequestMapping("/produitsParMC")
-public Page<Produit> getProduits(String mc,int page){
-return produitRepository.produitParMC("%"+mc+"%", new PageRequest(page, 5));
-}
-@RequestMapping("/get")
-public Produit getProduit(Long ref){
-return produitRepository.findOne(ref);
-}
-@RequestMapping("/delete")
-public boolean delete(Long ref){
-produitRepository.delete(ref);
-return true;
-}
-@RequestMapping("/update")
-public Produit update(Produit p){
-produitRepository.saveAndFlush(p);
-return p;
-}*/
 public IEncadrantService getEncadrantService() {
 	return encadrantService;
 }

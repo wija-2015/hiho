@@ -25,8 +25,8 @@ public interface IEncadrantRepository extends JpaRepository<Encadrant, Long>{
 	
 	@Modifying
 	@Transactional
-	@Query("update Encadrant c set c.nomUser= :nom, c.prenomUser= :prenom where c.idEncadrant = :x")
-	public int updateEncadrant(@Param("nom")String nom,@Param("prenom")String prenom,@Param("x")int id);
+	@Query("update Encadrant c set c.nomUser= :nom, c.prenomUser= :prenom, c.mailUser= :email,c.matriculeUser= :matricule where c.idEncadrant = :x")
+	public int updateEncadrant(@Param("nom")String nom,@Param("prenom")String prenom,@Param("email") String email,@Param("matricule") String matricule,@Param("x")int id);
 	
 	@Query("select c.nomUser,c.mailUser from Collaborateur c, EvaluationObjectif ev where ev.encadrant.idEncadrant like :x and c.idCollaborateur= ev.collaborateur.idCollaborateur")
 	public List<Collaborateur> findEncadrantCollabs(@Param("x")int id);

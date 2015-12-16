@@ -2,24 +2,35 @@ app.controller("ManagerCtrl",function(Manager,$rootScope,$scope,$http,$state,$wi
            Manager.findAll().then(function(d) {
     $scope.managers = d;
   });
-           $scope.login=function(){
+  $scope.iduse=$window.sessionStorage.idUser;
+           $scope.login=function(){			   
                $http.post("http://localhost:8181/managers/signin",$scope.manager)
                .success(function(response){
               	 if(response!=0)
               		 {
               		$rootScope.authentication=true ;
                		 $window.sessionStorage.idUser=response ;
-              		 $state.go('app.dashboard-v1');
+              		 $state.go('app.ajouterFicheObjectifs');
                      console.log(response) ;
               		 }
               	 else {
-              		$rootScope.authentication=false ;
-              	 
-              		 $scope.message="identifiants incorrectes" ;
-              		 
+              		$rootScope.authentication=false ;             	     
+              		 $scope.message="identifiants incorrectes" ;              		 
               	 }
               	 })
-                 }
+                 };
+		
+		$scope.modifier=function(SelectedManager){
+              	$http({
+              	    url: 'http://localhost:8181/managers/update/'+SelectedManager.idManagerrh,
+              	    method: 'PUT',
+              	    data:SelectedManager
+              	})
+              	.success(function(response) {  
+          		          console.log(response);
+          				  window.alert("Manager RH modifié !");
+          				  });
+           };
           });
 
 app.controller('ModalInstanceCtrlManager', ['$scope','$http','$modalInstance', function($scope, $http,$modalInstance) {

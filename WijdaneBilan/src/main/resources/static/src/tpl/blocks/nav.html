@@ -26,7 +26,12 @@
 	  
 	  <li ui-sref-active="active">
         <a ui-sref="app.consulterFeedbackAdmin">
-          <span>Consulter feedbacks d'un collaborateur</span>
+          <span>Consulter feedbacks courants d'un collaborateur</span>
+        </a>
+      </li>
+	  <li ui-sref-active="active">
+        <a ui-sref="app.consulterFicheObjectifsAdmin">
+          <span>Consulter fiche d'Objectifs courante d'un collaborateur</span>
         </a>
       </li>
       <li ui-sref-active="active">
@@ -52,11 +57,6 @@
           <span>Ajouter/Modifier Manager RH</span>
         </a>
       </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.collaborateursbap">
-          <span>Consulter/Modifier fiches d'objectifs d'un Manager RH</span>
-        </a>
-      </li>
     </ul>
   </li>
   <li class="line dk hidden-folded"></li>
@@ -75,16 +75,16 @@
           <span>Ajouter/Modifier Encadrant</span>
         </a>
       </li>
-      <li ui-sref-active="active">
+      <!--<li ui-sref-active="active">
         <a ui-sref="app.collaborateursbap">
-          <span>Consulter feedbacks d'un encadrant</span>
+          <span>Consulter feedback d'un encadrant</span>
         </a>
       </li>
-	  <li ui-sref-active="active">
+	   <li ui-sref-active="active">
         <a ui-sref="app.collaborateursbap">
           <span>Consulter l'évaluation d'objectifs d'un encadrant</span>
         </a>
-      </li>
+      </li> -->
     </ul>
   </li>
   <li class="line dk hidden-folded"></li>
@@ -109,6 +109,11 @@
 	  <li ui-sref-active="active">
         <a ui-sref="app.ajouterFicheObjectifs">
           <span>Ajouter fiche d'objectifs d'un collaborateur</span>
+        </a>
+      </li>
+	  <li ui-sref-active="active">
+        <a ui-sref="app.consulterFicheObjectifs">
+          <span>Consulter fiche d'objectifs d'un collaborateur</span>
         </a>
       </li>
 	  <li ui-sref-active="active">
@@ -149,24 +154,18 @@
         </a>
       </li>
 	  <li ui-sref-active="active">
-        <a ui-sref="app.consulterFeedbackEncadrant">
-          <span>Consulter Feedbaacks</span>
-        </a>
-      </li>
-	  <li ui
-	  <li ui-sref-active="active">
         <a ui-sref="app.evaluerObjectif">
           <span>Evaluer Objectif</span>
         </a>
       </li>
 	  <li ui-sref-active="active">
-        <a ui-sref="app.ancienFeedback">
-          <span>Consulter Anciens Feedbacks</span>
+        <a ui-sref="app.consulterFeedbackEncadrant">
+          <span>Consulter Feedbacks</span>
         </a>
       </li>
 	  <li ui-sref-active="active">
         <a ui-sref="app.ancienEvaluation">
-          <span>Consulter Anciennes Evaluations d'Objectifs</span>
+          <span>Consulter Evaluations d'Objectifs</span>
         </a>
       </li>
     </ul>
@@ -206,93 +205,19 @@
           <span>Consulter Fiche d'Objectifs de l'Année Prochaine</span>
         </a>
       </li>
+	  <li ui-sref-active="active">
+        <a ui-sref="app.anciensBaps">
+          <span>Consulter Anciens Baps</span>
+        </a>
+      </li>
     </ul>
   </li>
   
   <li class="line dk hidden-folded"></li>
-  <li ui-sref-active="active">
-    <a ui-sref="app.mail.list">
-      <b class="badge bg-info pull-right">9</b>
-      <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-      <span class="font-bold" translate="aside.nav.EMAIL">Email</span>
-    </a>
-  </li>
-  <li>
-    <a href class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-th-large icon text-success"></i>
-      <span class="font-bold">Apps</span>
-    </a>
-    <ul class="nav nav-sub dk">
-      <li class="nav-sub-header">
-        <a href>
-          <span>Apps</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.todo">
-          <span>Todo</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="apps.note">
-          <span>Note</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="apps.contact">
-          <span>Contacts</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.weather">
-          <span>Weather</span>
-        </a>
-      </li>
-    </ul>
-  </li>
-
-  <li class="line dk"></li>
 
   <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components.COMPONENTS">Components</span>
   </li>
-  <!-- <li>
-    <a href class="auto">      
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <b class="badge bg-info pull-right">3</b>
-      <i class="glyphicon glyphicon-th"></i>
-      <span>Layout</span>
-    </a>
-    <ul class="nav nav-sub dk">
-      <li class="nav-sub-header">
-        <a href>
-          <span>Layout</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="layout.app">
-          <span>Application</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="layout.fullwidth">
-          <span>Full width</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="layout.mobile">
-          <span>Mobile</span>
-        </a>
-      </li>      
-    </ul>
-  </li> -->
   <li ng-class="{active:$state.includes('app.ui')}">
     <a href class="auto">
       <span class="pull-right text-muted">

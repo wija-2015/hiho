@@ -19,7 +19,6 @@ public class IObjectifServiceImpl implements IObjectifService{
 
 	@Override
 	public List<Objectif> toutsObjectifs() {
-		// TODO Auto-generated method stub
 		return objectifRepository.findAll();
 	}
 
@@ -46,6 +45,11 @@ public class IObjectifServiceImpl implements IObjectifService{
 	@Override
 	public Objectif ajouterObjectif(Objectif o) {
 		return objectifRepository.save(o);
+	}
+
+	@Override
+	public List<Objectif> ficheCollab(int idC) {
+		return objectifRepository.ficheCollab(idC);
 	}
 
 
