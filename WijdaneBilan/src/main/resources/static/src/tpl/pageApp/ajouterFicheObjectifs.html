@@ -13,7 +13,6 @@
 			               <option ng-repeat="c in collaborateurs" ng-value="c.idCollaborateur">{{c.matriculeUser}}</option>
 			       </select>  			   
 			   </div>
-			   <div ng-controller="ManagerCtrl">{{iduse}}</div>
            </div>
 	</div>
 	      
@@ -53,12 +52,11 @@
  		                    <input type="number" class="form-control" placeholder="Poids" ng-model="objectif.evaluations[2].poidsObj" required >
 		</td>
 		
-		<td class="v-middle"><input type="radio" name="autoriser" value="oui"/>Oui 
-		                    <input type="radio" name="autoriser" value="non" checked="checked"/>Non
-		</td>
+		<td class="v-middle">
+<!-- 		    <input type="checkbox" name="autoriser" ng-value="oui" ng-model="objectif.autoriser" ng-init="objectif.autoriser='non'"/>Oui  -->
+		                    <!-- <input type="radio" name="autoriser" value="non" checked="checked"/>Non -->
+		</td> 
        <td class="v-middle"><button class="btn btn-info" ng-click="inserer_objectif()">Envoyer</button></td>
- 
-		
 		
     </tr>
   </table>

@@ -58,9 +58,8 @@ public class IFeedbackServiceImpl implements IFeedbackService {
 		return feedbackRepository.adminFeedbacks(idCollab,p);
 	}
 	@Override
-	public Page<Feedback> managerFeedbacks(int idCollab, int idManager,
-			Pageable p) {
-		return feedbackRepository.managerFeedbacks(idCollab, idManager, p);
+	public Page<Feedback> managerFeedbacks(int idCollab,Pageable p) {
+		return feedbackRepository.managerFeedbacks(idCollab, p);
 	}
 	@Override
 	public Page<Feedback> collabFeedbacks(int idC, Pageable p) {

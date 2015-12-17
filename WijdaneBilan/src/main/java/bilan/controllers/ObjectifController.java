@@ -55,8 +55,8 @@ private IManagerService managerService;
 public List<Objectif> getObjectifs(){
 return objectifService.toutsObjectifs();
 }
-@RequestMapping(value="/save/{id}", method = RequestMethod.POST,consumes={"application/json"},produces ={"application/json"})
-public boolean saveObjectif(@RequestBody ObjectifDTO o,@PathVariable("id")  int id,HttpServletResponse response){	
+@RequestMapping(value="/save", method = RequestMethod.POST,consumes={"application/json"},produces ={"application/json"})
+public boolean saveObjectif(@RequestBody ObjectifDTO o,HttpServletResponse response){	
 	Objectif obj = new Objectif() ;
 	Categorie cat = new Categorie() ;
 	cat=categorieService.trouverCategorie(o.getIdCategorie()) ;
@@ -64,8 +64,9 @@ public boolean saveObjectif(@RequestBody ObjectifDTO o,@PathVariable("id")  int 
 	obj.setDescription(o.getDescription());
 	obj.setDiffBapBip(o.getDiffBapBip());
 	obj.setMoyenObj(o.getMoyenObj());
+	obj.setAutoriser(o.getAutoriser());
 	Managerrh manager=new Managerrh();
-	manager=managerService.trouverManager(id);
+	manager=managerService.trouverManager(o.getIdManager());
 	obj.setManagerrh(manager);
 	 
       List<EvaluationObjectif> ev=new ArrayList<EvaluationObjectif>() ;

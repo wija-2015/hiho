@@ -17,6 +17,7 @@ public class Objectif implements Serializable {
 	private String description;
 	private String diffBapBip;
 	private String moyenObj;
+	private int autoriser;
 	
 	//bi-directional many-to-one association to Evaluationobjectif
 	@OneToMany(mappedBy="objectif")
@@ -101,6 +102,14 @@ public class Objectif implements Serializable {
 
 	public void setEvaluationobjectifs(Collection<EvaluationObjectif> evaluationobjectifs) {
 		this.evaluationobjectifs = evaluationobjectifs;
+	}
+
+	public int getAutoriser() {
+		return autoriser;
+	}
+
+	public void setAutoriser(int autoriser) {
+		this.autoriser = autoriser;
 	}
 	
 

@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import bilan.entities.Categorie;
-//import bilan.entities.Managerrh;
 
 public interface ICategorieRepository extends JpaRepository<Categorie, Long>{
 	
@@ -29,7 +28,5 @@ public interface ICategorieRepository extends JpaRepository<Categorie, Long>{
 	
 	@Query("select m from Categorie m")
 	public List<Categorie> findAllCategories();
-	
-	//public List<Admin> findAll();
 	
 }

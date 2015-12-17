@@ -126,7 +126,7 @@ public class Feedback implements Serializable {
 	public void setCollaborateur(Collaborateur collaborateur) {
 		this.collaborateur = collaborateur;
 	}
-	@JsonIgnore
+	//@JsonIgnore
 	public Encadrant getEncadrant() {
 		return this.encadrant;
 	}

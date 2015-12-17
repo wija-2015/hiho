@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import bilan.entities.Projet;
-//import bilan.entities.Managerrh;
 
 public interface IProjetRepository extends JpaRepository<Projet, Long>{
 	
@@ -29,7 +28,6 @@ public interface IProjetRepository extends JpaRepository<Projet, Long>{
 	@Query("select m from Projet m")
 	public List<Projet> findAllProjets();
 	
-	//public List<Admin> findAll();
 	
 }
 

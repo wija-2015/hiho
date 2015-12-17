@@ -52,7 +52,9 @@
 		<td class="v-middle">
 		   <div ng-repeat="eval in obj.evaluationobjectifs">{{eval.resultatObj}}</div>
 		</td>
-       <td  class="v-middle"></td>		
+       <td class="v-middle">
+		   <div ng-repeat="eval in obj.evaluationobjectifs">{{eval.noteFinaleObj}}</div>
+		</td>
 	    <td class="v-middle"><button class="btn btn-sm btn-info" ng-click="">Envoyer</button><br></br><button class="btn btn-sm btn-info" ng-click="">Supprimer</button></td>
 	</tr>
   </table>

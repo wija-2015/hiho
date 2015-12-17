@@ -21,7 +21,7 @@ app.controller("CollaborateurCtrl",function(Collaborateur,Manager,$scope,$rootSc
               		 console.log(response) ;
               	 }
               	 })
-                 }
+                 };
            $scope.modifier=function(SelectedCollab){
               	$http({
               	    url: 'http://localhost:8181/collaborateurs/update/'+SelectedCollab.idCollaborateur,

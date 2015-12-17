@@ -61,7 +61,6 @@ public class IManagerServiceImpl implements IManagerService {
 
 	@Override
 	public long verify(String mail, String matriculeUser) {
-		// TODO Auto-generated method stub
 		return	managerRepository.verify(mail, matriculeUser) ;
 	}
 	@Override

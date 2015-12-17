@@ -54,9 +54,9 @@ public long signinManager(@RequestBody Managerrh m, HttpServletResponse response
 public int deleteManager(@PathVariable("id") int id){
    return managerService.supprimerManager(id);
 }
-@RequestMapping(value="/collabs/{id}", method = RequestMethod.GET)
-public List<Collaborateur> findManagerCollabs(@PathVariable("id") int id){
-	return managerService.trouverManagerCollabs(id);
+@RequestMapping(value="/collabs/{idC}", method = RequestMethod.GET)
+public List<Collaborateur> findManagerCollabs(@PathVariable("idC") int idC){
+	return managerService.trouverManagerCollabs(idC);
 }
 public IManagerService getCollabService() {
 	return managerService;

@@ -1,4 +1,4 @@
-app.controller('FicheCtrl',function(Collaborateur,Categorie,Encadrant,$filter,$http,$scope){
+app.controller('FicheCtrl',function(Collaborateur,Categorie,Encadrant,$filter,$http,$scope,$window){
 	Encadrant.findAll().then(function(d) {
               $scope.encadrants = d;
             }); 
@@ -8,14 +8,14 @@ app.controller('FicheCtrl',function(Collaborateur,Categorie,Encadrant,$filter,$h
 	Categorie.findAll().then(function(d) {
               $scope.categories = d;
             }); 
-    $scope.collabs=[];			
+    /* $scope.collabs=[];			
 	$scope.chargerManagerCollabs=function(){
 		$http.get("http://localhost:8181/managers/collabs/"+$scope.iduse)
 		.success(function(data){
 		$scope.collabs=data;
 		console.log(data);
 		});
-		};
+		}; */
     $scope.chargerCollab=function(){
 		$http.get("http://localhost:8181/collaborateurs/collab/"+$scope.objectif.idCollaborateur)
 		.success(function(data){
@@ -33,9 +33,10 @@ app.controller('FicheCtrl',function(Collaborateur,Categorie,Encadrant,$filter,$h
 	$scope.objectif={} ;
 	$scope.objectif.evaluations=[] ;
 	$scope.inserer_objectif = function () {
+		$scope.objectif.idManager=$window.sessionStorage.idUser;
     	datas=$scope.objectif ;
     	$http({
-    	    url: 'http://localhost:8181/objectifs/save/7',
+    	    url: 'http://localhost:8181/objectifs/save',
     	    method: 'POST',
     	    data:datas
     	})

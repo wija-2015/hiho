@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import bilan.entities.Theme;
-//import bilan.entities.Managerrh;
 
 public interface IThemeRepository extends JpaRepository<Theme, Long>{
 	
@@ -29,6 +28,5 @@ public interface IThemeRepository extends JpaRepository<Theme, Long>{
 	@Query("select m from Theme m")
 	public List<Theme> findAllThemes();
 	
-	//public List<Admin> findAll();
 	
 }

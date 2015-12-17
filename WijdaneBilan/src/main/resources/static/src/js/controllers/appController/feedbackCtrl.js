@@ -1,4 +1,4 @@
-app.controller("FeedbackCtrl",function(Collaborateur,Projet,Theme,$scope,$http){
+app.controller("FeedbackCtrl",function(Collaborateur,Projet,Theme,$scope,$http,$window){
 	
     Collaborateur.findAll().then(function(d) {
               $scope.collaborateurs = d;
@@ -16,6 +16,7 @@ app.controller("FeedbackCtrl",function(Collaborateur,Projet,Theme,$scope,$http){
 	         {"nomQualification":"Selon Attente","poidsQualification":2},{"nomQualification":"Démontre des Forces","poidsQualification":3}] ;
 
     $scope.inserer_feedback = function () {
+		$scope.feedback.idEncadrant=$window.sessionStorage.idUser;
     	datas=$scope.feedback ;
     	$http({
     	    url: 'http://localhost:8181/feedbacks/save',
@@ -63,7 +64,7 @@ app.controller("FeedbackCtrl",function(Collaborateur,Projet,Theme,$scope,$http){
     };
 	
 	$scope.getManagerFeedbacks=function(){
-    $http.get("http://localhost:8181/feedbacks/managerFeedbacks/"+$scope.idCollaborateur+"/1/"+$scope.pageCourante)
+    $http.get("http://localhost:8181/feedbacks/managerFeedbacks/"+$scope.idCollaborateur+"/"+$scope.pageCourante)
 	   .success(function(data){
 	   $scope.collabfeedbacks=data;
 	   $scope.pages=new Array(data.totalPages);
@@ -75,9 +76,10 @@ app.controller("FeedbackCtrl",function(Collaborateur,Projet,Theme,$scope,$http){
 	  $scope.getManagerFeedbacks();
     };
 	
-	$scope.collabors=[];
+	//$scope.collabors=[];
 	$scope.getMangerCollabs=function(){
-    $http.get("http://localhost:8181/managers/collabs/4")
+    $scope.idManager=$window.sessionStorage.idUser;
+    $http.get("http://localhost:8181/managers/collabs/"+$scope.idManager)
 	   .success(function(data){
 	   $scope.collabors=data;
 	   console.log(data);

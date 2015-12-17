@@ -20,7 +20,7 @@ app.controller("EncadrantCtrl",function(Encadrant,$scope,$http,$rootScope,$state
               		 console.log(response) ;
               	 }
               	 })
-                 }
+                 };
     $scope.modifier=function(SelectedEncadrant){
               	$http({
               	    url: 'http://localhost:8181/encadrants/update/'+SelectedEncadrant.idEncadrant,

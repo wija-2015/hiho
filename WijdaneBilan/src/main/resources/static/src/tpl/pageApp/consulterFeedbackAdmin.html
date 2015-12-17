@@ -16,7 +16,8 @@
            </div>
 	</div>	   
    <div class="panel panel-default" ng-if="collabfeedbacks">
-    <div ng-repeat="feed in collabfeedbacks.content">   {{collabfeedbacks.totalPages}}
+    <div ng-repeat="feed in collabfeedbacks.content">
+	
    
     <div class="row">
 	  <div class="col-sm-6">   
@@ -24,15 +25,18 @@
 	  <div class="panel b-a">
           <div class="panel-heading b-b b-light">Informations du feedback</div>
           <div class="panel-body">
-		    
-            <div class="row"><div class="col-sm-6"> Nom du collaborateur</div><div class="col-sm-6">{{feed.collaborateur.nomUser}}</div></div>
+		     <div class="row"><div class="col-sm-6">Nom Prénom d'Evaluateur</div><div class="col-sm-6">{{feed.encadrant.prenomUser}} {{feed.encadrant.nomUser}}</div></div>
+		     <div class="row"><div class="col-sm-6">Matricule Evaluateur</div><div class="col-sm-6">{{feed.encadrant.matriculeUser}}</div></div>
+			 <div class="row"><div class="col-sm-6">Profil Evaluateur</div><div class="col-sm-6">{{feed.encadrant.profil.nomProfil}}</div></div>
+            <br></br> 
+			<div class="row"><div class="col-sm-6">Nom du collaborateur</div><div class="col-sm-6">{{feed.collaborateur.nomUser}}</div></div>
             <div class="row"><div class="col-sm-6">Prénom</div><div class="col-sm-6">{{feed.collaborateur.prenomUser}}</div></div>
 			 <div class="row"><div class="col-sm-6">Matricule</div><div class="col-sm-6">{{feed.collaborateur.matriculeUser}}</div></div>
 			 <div class="row"><div class="col-sm-6">Poste Actuel </div><div class="col-sm-6">{{feed.collaborateur.poste}}</div></div>
             <div class="row"><div class="col-sm-6">Code Projet</div><div class="col-sm-6">{{feed.projet.codeProjet}}</div></div>
 			 <div class="row"><div class="col-sm-6">Nom Projet</div><div class="col-sm-6">{{feed.projet.nomProjet}}</div></div>
-			 <div class="row"><div class="col-sm-6">Date Début d'intervention </div><div class="col-sm-6">{{feed.dateDebut}}</div></div>
-            <div class="row"><div class="col-sm-6">Date Fin d'intervention</div><div class="col-sm-6">{{feed.dateFin}}</div></div>
+			 <div class="row"><div class="col-sm-6">Date Début d'intervention </div><div class="col-sm-6">{{feed.dateDebut|date:'yyyy-MM-dd'}}</div></div>
+            <div class="row"><div class="col-sm-6">Date Fin d'intervention</div><div class="col-sm-6">{{feed.dateFin|date:'yyyy-MM-dd'}}</div></div>
 			 <div class="row"><div class="col-sm-6">Role</div><div class="col-sm-6">{{feed.role}}</div></div>
 			 <div class="row"><div class="col-sm-6">Nombre de jours valorisés</div><div class="col-sm-6">{{feed.nbJours}}</div></div>
 			 <div class="row"><div class="col-sm-6">Commentaire Général </div><div class="col-sm-6">{{feed.commentaire}}</div></div>

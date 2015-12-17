@@ -96,7 +96,7 @@ public class FeedbackController {
 	      qualificatioService.ajouterQualification(q.get(i)) ;
 	    	  
 	      }
-	      smtpMailSender.send("mrtahalz@gmail.com", "Un feedback à été crée", "Un feedback est crée ");
+	      smtpMailSender.send("wijdane.khattat@gmail.com", "Un feedback à été crée", "Un feedback est crée ");
 	      //smtpMailSender.send(c.getManagerrh().getMailUser(), "Un feedback à été crée", "Un feedback est crée ");
 			
 	      return true;
@@ -113,11 +113,10 @@ public class FeedbackController {
 			                               @PathVariable("page") int page) {
 		return feedbackService.adminFeedbacks(idCollaborateur, new PageRequest(page, 1));
 	}
-	@RequestMapping(value="/managerFeedbacks/{idCollaborateur}/{idManager}/{page}",method=RequestMethod.GET)
+	@RequestMapping(value="/managerFeedbacks/{idCollaborateur}/{page}",method=RequestMethod.GET)
 	public Page<Feedback> managerFeedbacks(@PathVariable("idCollaborateur") int idCollaborateur,
-			                               @PathVariable("idManager") int idManager,
 			                               @PathVariable("page") int page) {	
-		return feedbackService.managerFeedbacks(idCollaborateur, idManager, new PageRequest(page, 1));
+		return feedbackService.managerFeedbacks(idCollaborateur, new PageRequest(page, 1));
 	}
 @RequestMapping(value="/collabFeedbacks2",method=RequestMethod.GET)
 public List<Feedback> collabFeedbacks2() {

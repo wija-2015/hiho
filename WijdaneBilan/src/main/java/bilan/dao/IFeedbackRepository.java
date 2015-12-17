@@ -20,8 +20,8 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Long>{
 	public Page<Feedback> encadrantFeedbacks(@Param("x")int idC, @Param("y")int idE,Pageable p);
 	@Query("select a from Feedback a where a.collaborateur.idCollaborateur like :x")
 	public Page<Feedback> adminFeedbacks(@Param("x")int idC,Pageable p);
-	@Query("select a from Feedback a where a.collaborateur.managerrh.idManagerrh like :y and a.collaborateur.idCollaborateur like :x")
-	public Page<Feedback> managerFeedbacks(@Param("x")int idC, @Param("y")int idM,Pageable p);
+	@Query("select a from Feedback a where a.collaborateur.idCollaborateur like :x")
+	public Page<Feedback> managerFeedbacks(@Param("x")int idC, Pageable p);
 	@Query("select a from Feedback a where a.collaborateur.idCollaborateur like :x")
 	public Page<Feedback> collabFeedbacks(@Param("x")int idC,Pageable p);
 	
@@ -31,19 +31,5 @@ public interface IFeedbackRepository extends JpaRepository<Feedback, Long>{
 	@Query("select f from Feedback f where f.idFeedback like :x")
 	public Feedback findFeedback(@Param("x")int id);
 	
-	//@Modifying
-	//@Transactional
-	//@Query("delete Profil a where a.idProfil = ?1")
-	//public int deleteProfil(int id);
-	
-	//@Modifying
-	//@Transactional
-	//@Query("update Profil a set a.nomProfil= :nom where a.idProfil = :x")
-	//public int updateProfil(@Param("nom")String nom,@Param("x")int id);
-	
-	//@Query("select m.nomProfil from Profil m")
-	//public List<Profil> findAllProfils();
-	
-	//public List<Admin> findAll();
 	
 }

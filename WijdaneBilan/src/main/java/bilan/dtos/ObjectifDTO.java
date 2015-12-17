@@ -12,7 +12,14 @@ public class ObjectifDTO {
 	private int idCategorie;
 	private int idCollaborateur;
 	private int idManager;
+	private int autoriser;
 	
+	public int getAutoriser() {
+		return autoriser;
+	}
+	public void setAutoriser(int autoriser) {
+		this.autoriser = autoriser;
+	}
 	public int getIdManager() {
 		return idManager;
 	}

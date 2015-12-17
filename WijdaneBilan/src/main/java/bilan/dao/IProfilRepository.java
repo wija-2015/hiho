@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import bilan.entities.Profil;
-//import bilan.entities.Managerrh;
 
 public interface IProfilRepository extends JpaRepository<Profil, Long>{
 	
@@ -29,7 +28,5 @@ public interface IProfilRepository extends JpaRepository<Profil, Long>{
 	
 	@Query("select m from Profil m")
 	public List<Profil> findAllProfils();
-	
-	//public List<Admin> findAll();
 	
 }

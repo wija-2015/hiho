@@ -22,6 +22,7 @@ public interface IEncadrantRepository extends JpaRepository<Encadrant, Long>{
 	@Transactional
 	@Query("delete Encadrant c where c.idEncadrant = ?1")
 	public int deleteEncadrant(int id);
+	
 	@Query("select count(c) from Encadrant c where c.mailUser like :x and c.matriculeUser like :y")
 	public long verify(@Param("x")String mail,@Param("y")String matricule);	
 	@Query("select c.idCollaborateur from Collaborateur c where c.mailUser like :x and c.matriculeUser like :y")
@@ -37,7 +38,5 @@ public interface IEncadrantRepository extends JpaRepository<Encadrant, Long>{
 	
 	@Query("select e from Encadrant e")
 	public List<Encadrant> findAllEncadrants();
-
-	//public List<Managerrh> findAll();
 	
 }
