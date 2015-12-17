@@ -38,7 +38,7 @@ public int updateEncadrant(@PathVariable("id")  int id,@RequestBody Encadrant c)
 }
 
 @RequestMapping(value="signin", method = RequestMethod.POST,consumes={"application/json"},produces ={"application/json"})
-public long signinCollab(@RequestBody Collaborateur c, HttpServletResponse response){
+public long signinCollab(@RequestBody Encadrant c, HttpServletResponse response){
 	 if(encadrantService.verify(c.getMailUser(), c.getMatriculeUser())==0) {
 		 return 0 ;
 	 }

@@ -13,6 +13,8 @@ public interface IObjectifService {
 	public int supprimerObjectif(int id);
 	public int modifierObjectif(String desc, int id);
 	
+	public List<Objectif> encadrantObjectifs(int idE);
+	
 	
 	
 }

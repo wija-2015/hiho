@@ -132,7 +132,4 @@ public IFeedbackService getFeedbackService() {
 public void setFeedbackService(IFeedbackService feedbackService) {
 	feedbackService = feedbackService;
 }
-
-
-
 }

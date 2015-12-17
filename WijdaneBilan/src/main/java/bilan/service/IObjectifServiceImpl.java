@@ -52,5 +52,11 @@ public class IObjectifServiceImpl implements IObjectifService{
 		return objectifRepository.ficheCollab(idC);
 	}
 
+	@Override
+	public List<Objectif> encadrantObjectifs(int idE) {
+		// TODO Auto-generated method stub
+		return objectifRepository.encadrantObjectifs(idE);
+	}
+
 
 }

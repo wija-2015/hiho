@@ -67,13 +67,11 @@ public class IEncadrantServiceImpl implements IEncadrantService {
 
 	@Override
 	public long verify(String mail, String matriculeUser) {
-		// TODO Auto-generated method stub
 		return	encadrantRepository.verify(mail, matriculeUser) ;
 	}
 
 	@Override
 	public long getIdEncadrant(String mail, String matriculeUser) {
-		// TODO Auto-generated method stub
 		return encadrantRepository.getIdEncadrant(mail, matriculeUser);
 	}
 	}

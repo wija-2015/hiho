@@ -25,7 +25,7 @@ public interface IEncadrantRepository extends JpaRepository<Encadrant, Long>{
 	
 	@Query("select count(c) from Encadrant c where c.mailUser like :x and c.matriculeUser like :y")
 	public long verify(@Param("x")String mail,@Param("y")String matricule);	
-	@Query("select c.idCollaborateur from Collaborateur c where c.mailUser like :x and c.matriculeUser like :y")
+	@Query("select c.idEncadrant from Encadrant c where c.mailUser like :x and c.matriculeUser like :y")
 	public long getIdEncadrant(@Param("x")String mail,@Param("y")String matricule);
 	
 	@Modifying

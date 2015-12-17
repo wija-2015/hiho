@@ -38,7 +38,8 @@ app.controller("FeedbackCtrl",function(Collaborateur,Projet,Theme,$scope,$http,$
 	$scope.pageCourante=0;	
 	$scope.pages=new Array();
     $scope.getEncadrantFeedbacks=function(){
-    $http.get("http://localhost:8181/feedbacks/encadrantFeedbacks/"+$scope.idCollaborateur+"/1/"+$scope.pageCourante)
+		//$scope.idEncadrant=$window.sessionStorage.idUser;
+    $http.get("http://localhost:8181/feedbacks/encadrantFeedbacks/"+$scope.idCollaborateur+"/"+$window.sessionStorage.idUser+"/"+$scope.pageCourante)
 	   .success(function(data){
 	   $scope.collabfeedbacks=data;
 	   $scope.pages=new Array(data.totalPages);
